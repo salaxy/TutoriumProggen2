@@ -6,21 +6,24 @@ public class Bestellung {
 
 	private GregorianCalendar bestelldatum;
 	private GregorianCalendar auslieferungsdatum;
-	private int index;
+	private int index = 0;
 	private PizzaVO[] warenkorb;
 	private KundeVO kunde;
 
 	private final int MAX_GERICHTE = 10;
 
 	public Bestellung(GregorianCalendar bestelldatum, KundeVO kunde) {
-		this.index = 0;
+//		super();
+//		this.index = 0;
 		this.warenkorb = new PizzaVO[10];
 		this.bestelldatum = bestelldatum;
 		this.kunde = kunde;
 	}
 
 	public void hinzufuegenGericht(PizzaVO neuePizza) {
-		// if(index>=warenkorb.length){ //alternativ(besser)
+		
+		// if(index>=warenkorb.length){ //alternativ
+		
 		if (index >= MAX_GERICHTE) {
 			System.out.println("Warenkorb voll");
 		} else {
@@ -31,7 +34,7 @@ public class Bestellung {
 
 	public void loescheLetztesGericht() {
 		if (index > 0) {
-			warenkorb[index - 1] = null;
+			warenkorb[index-1] = null;
 			index--;
 		}
 	}

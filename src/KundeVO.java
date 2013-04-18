@@ -44,26 +44,26 @@ public class KundeVO {
 
 	}
 
-	public short berechnerAlter(GregorianCalendar geburtsdatum) {
+	public static short berechnerAlter(GregorianCalendar geburtsdatum) {
 		GregorianCalendar heute = new GregorianCalendar();
 
 		int dayDiff = heute.get(GregorianCalendar.DAY_OF_MONTH)
 				- geburtsdatum.get(GregorianCalendar.DAY_OF_MONTH);
-		int monthDiff = heute.get(GregorianCalendar.MONTH)
+		int monthDiff = heute.get(GregorianCalendar.MONTH)+1
 				- geburtsdatum.get(GregorianCalendar.MONTH);
 		int yearDiff = heute.get(GregorianCalendar.YEAR)
 				- geburtsdatum.get(GregorianCalendar.YEAR);
 
 		if (monthDiff < 0) {
-			return (short) (yearDiff);
+			return (short) (yearDiff-1);
 		} else {
 			if (monthDiff > 0) {
 				return (short) yearDiff;
 			} else {
 				if (dayDiff >= 0) {
-					return (short) yearDiff;
+					return (short) (yearDiff);
 				} else {
-					return (short) (yearDiff - 1);
+					return (short) (yearDiff-1);
 				}
 			}
 		}
