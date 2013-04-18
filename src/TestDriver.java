@@ -15,11 +15,11 @@ public class TestDriver {
 		GregorianCalendar datum3 = new GregorianCalendar(1988, 4, 27);
 		GregorianCalendar datum4 = new GregorianCalendar(2013, 4, 1);
 
-		System.out.println(KundeVO.berechnerAlter(datum));
-		System.out.println(KundeVO.berechnerAlter(datum1));
-		System.out.println(KundeVO.berechnerAlter(datum2));
-		System.out.println(KundeVO.berechnerAlter(datum3));
-		System.out.println(KundeVO.berechnerAlter(datum4));
+//		System.out.println(KundeVO.berechnerAlter(datum));
+//		System.out.println(KundeVO.berechnerAlter(datum1));
+//		System.out.println(KundeVO.berechnerAlter(datum2));
+//		System.out.println(KundeVO.berechnerAlter(datum3));
+//		System.out.println(KundeVO.berechnerAlter(datum4));
 
 	}
 

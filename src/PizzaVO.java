@@ -1,94 +1,49 @@
 
+public class PizzaVO extends GerichtVO {
 
-public class PizzaVO {
+	private int groesse;
 
-	private String name;
-	private float preis;
-	private String[] zutaten;
-
-	public String getName() {
-		return name;
+	public PizzaVO() {
+		this(0, "unbelegte Pizza", 1.0f,
+				new String[] { "Kaese", "Tomatensauce" }, 10);
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public PizzaVO(String name) {
+		this(0, name, 1.0f, new String[] { "Kaese", "Tomatensauce" }, 10);
 	}
 
-	public float getPreis() {
-		return preis;
+	public PizzaVO(String name, float preis) {
+		this(0, name, preis, new String[] { "Kaese", "Tomatensauce" }, 10);
 	}
 
-	public void setPreis(float preis) {
-		this.preis = preis;
-	}
-
-	public String[] getZutaten() {
-		return zutaten;
-	}
-
-	public void setZutaten(String[] zutaten) {
-		this.zutaten = zutaten;
-	}
-	
-	public PizzaVO(){
-		this("unbelegte Pizza", 1.0f, new String[]{"Kaese","Tomatensauce"});
-	}
-	
-	public PizzaVO(String name){
-		this(name, 1.0f, new String[]{"Kaese","Tomatensauce"});
-	}
-	
-	public PizzaVO(String name, float preis){
-		this(name, preis, new String[]{"Kaese","Tomatensauce"});
-	}
-
-	public PizzaVO(String name, float preis, String[] zutaten) {
-		super();
-		this.name = name;
-		this.preis = preis;
-		this.zutaten = zutaten;
+	public PizzaVO(int nummer, String name, float preis, String[] zutaten,
+			int groesse) {
+		super(nummer, name, preis, zutaten);
+		this.groesse = groesse;
 	}
 
 	public PizzaVO clone() {
-		PizzaVO pizza = new PizzaVO(this.getName(), this.getPreis(),
-				this.getZutaten());
+		PizzaVO pizza = new PizzaVO(this.getNummer(), this.getName(),
+				this.getPreis(), this.getZutaten(), this.getGroesse());
 		return pizza;
 	}
 
 	public boolean equals(Object obj) {
-		PizzaVO anderePizza = null;
-
-		boolean isEqual = false;
-		if (obj instanceof PizzaVO) {
-			anderePizza = (PizzaVO) obj;
-		} else {
-			return false;
-		}
-
-		if (this.name.compareToIgnoreCase(anderePizza.getName()) == 0) {
-
-			if (this.preis == anderePizza.getPreis()) {
-
-				if (this.zutaten.length != anderePizza.getZutaten().length) {
-					return false;
-				}
-
-				for (int i = 0; i < anderePizza.getZutaten().length; i++) {
-					isEqual = this.zutaten[i].compareToIgnoreCase(anderePizza
-							.getZutaten()[i]) == 0 && isEqual;
-				}
-
-				return isEqual;
-			}
-
-		}
-
-		return false;
+		return (obj instanceof PizzaVO) && super.equals(obj)
+				&& this.getGroesse() == ((PizzaVO) obj).getGroesse();
 	}
-	
-	public String toString(){
-		return "Pizza: "+this.name +", " + this.preis;
-		
+
+	public String toString() {
+		return "Pizza: " + this.name + ", " + this.preis;
+		//TODO Vervollstaendigung
+	}
+
+	public int getGroesse() {
+		return groesse;
+	}
+
+	public void setGroesse(int groesse) {
+		this.groesse = groesse;
 	}
 
 }

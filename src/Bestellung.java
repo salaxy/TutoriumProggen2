@@ -7,7 +7,7 @@ public class Bestellung {
 	private GregorianCalendar bestelldatum;
 	private GregorianCalendar auslieferungsdatum;
 	private int index = 0;
-	private PizzaVO[] warenkorb;
+	private GerichtVO[] warenkorb;
 	private KundeVO kunde;
 
 	private final int MAX_GERICHTE = 10;
@@ -15,12 +15,13 @@ public class Bestellung {
 	public Bestellung(GregorianCalendar bestelldatum, KundeVO kunde) {
 //		super();
 //		this.index = 0;
-		this.warenkorb = new PizzaVO[10];
+		this.warenkorb = new GerichtVO[10];
 		this.bestelldatum = bestelldatum;
 		this.kunde = kunde;
+		kunde.setBestellung(this);
 	}
 
-	public void hinzufuegenGericht(PizzaVO neuePizza) {
+	public void hinzufuegenGericht(GerichtVO neuePizza) {
 		
 		// if(index>=warenkorb.length){ //alternativ
 		
@@ -39,7 +40,7 @@ public class Bestellung {
 		}
 	}
 
-	public PizzaVO getGericht(int index) {
+	public GerichtVO getGericht(int index) {
 		return warenkorb[index];
 	}
 
@@ -51,7 +52,7 @@ public class Bestellung {
 
 		float summe = 0.0f;
 
-		for (PizzaVO aktPizza : warenkorb) {
+		for (GerichtVO aktPizza : warenkorb) {
 			if (aktPizza != null)
 				summe = summe + aktPizza.getPreis();
 		}
@@ -75,7 +76,7 @@ public class Bestellung {
 		gericht = gericht + "\nKunde: " + this.kunde.toString();
 		gericht = gericht + "\nGerichte (" + this.getAnzGerichte() +"):\n";
 		
-		for (PizzaVO aktGericht : warenkorb) {
+		for (GerichtVO aktGericht : warenkorb) {
 			gericht = gericht + "          " + ((aktGericht != null) ? aktGericht.toString() + "\n" : "");
 		}
 
