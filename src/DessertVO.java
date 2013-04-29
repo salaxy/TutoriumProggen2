@@ -22,9 +22,13 @@ public class DessertVO extends GerichtVO {
 		return (obj instanceof DessertVO) && super.equals(obj);
 	}
 
-	public String toString() {
-		return "Dessert: " + this.name + ", " + this.preis;
-		// TODO Vervollstaendigung
+	public int getGerichtNummer() {
+		return this.getNummer();
+	}
+
+	@Override
+	protected String getGerichtName() {
+		return this.getName();
 	}
 
 }

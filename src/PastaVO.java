@@ -1,4 +1,3 @@
-
 public class PastaVO extends GerichtVO {
 
 	private int pastaSorte;
@@ -33,9 +32,20 @@ public class PastaVO extends GerichtVO {
 				&& this.getPastaSorte() == ((PastaVO) obj).getPastaSorte();
 	}
 
-	public String toString() {
-		return "Pasta: " + this.name + ", " + this.preis;
-		//TODO Vervollstaendigung
+	public String getGerichtName() {
+		
+		StringBuilder ausgabe = new StringBuilder();
+		ausgabe.append(this.getName()+" ");
+
+		switch (this.getPastaSorte()) {
+			case 4: ausgabe.append("- Spaghetti");
+			break;
+			case 5: ausgabe.append("- Tortellini");
+			break;
+			case 6: ausgabe.append("- Gnocchi");
+		}
+
+		return ausgabe.toString();
 	}
 
 	public int getPastaSorte() {
@@ -44,6 +54,10 @@ public class PastaVO extends GerichtVO {
 
 	public void setPastaSorte(int pastaSorte) {
 		this.pastaSorte = pastaSorte;
+	}
+	
+	public int getGerichtNummer() {
+		return (this.getPastaSorte()*100)+this.getNummer();
 	}
 
 }

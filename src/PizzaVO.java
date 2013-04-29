@@ -33,17 +33,30 @@ public class PizzaVO extends GerichtVO {
 				&& this.getGroesse() == ((PizzaVO) obj).getGroesse();
 	}
 
-	public String toString() {
-		return "Pizza: " + this.name + ", " + this.preis;
-		//TODO Vervollstaendigung
-	}
-
 	public int getGroesse() {
 		return groesse;
 	}
 
 	public void setGroesse(int groesse) {
 		this.groesse = groesse;
+	}
+	
+	public String getGerichtName() {
+		
+		StringBuilder ausgabe = new StringBuilder();
+		ausgabe.append(this.getName()+" ");
+
+		switch (this.getGroesse()) {
+			case 1: ausgabe.append("- Normal");
+			break;
+			case 2: ausgabe.append("- Grande");
+		}
+
+		return ausgabe.toString();
+	}
+	
+	public int getGerichtNummer() {
+		return (this.getNummer()*10)+this.getGroesse();
 	}
 
 }

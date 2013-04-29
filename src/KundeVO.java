@@ -51,15 +51,19 @@ public class KundeVO extends PersonVO {
 	}
 
 	public String toString() {
-		String ausgabe = "Kunde: \n" + "Id: " + this.getID() + super.toString();
 
-		if (hasBestellung()) {
-			ausgabe = ausgabe + "ja";
-		} else {
-			ausgabe = ausgabe + "nein";
+		StringBuffer ausgabe = new StringBuffer();
+		ausgabe.append("Kunde: \n");
+		ausgabe.append("Id: ");
+		ausgabe.append(this.getID()+ "\n");
+		ausgabe.append(super.toString());
+
+		if (!hasBestellung()) {
+			ausgabe.append("keine ");
 		}
+		ausgabe.append("Bestellung vorhanden\n");
 		
-		return ausgabe;
+		return ausgabe.toString();
 	}
 
 	public boolean hasBestellung() {

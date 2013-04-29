@@ -9,7 +9,6 @@ public class PersonVO {
 	protected String geschlecht;
 	protected GregorianCalendar geburtsdatum;
 
-	
 	public PersonVO(String nachName, String vorName, String strasse,
 			String hausNr, String geschlecht, GregorianCalendar geburtsdatum) {
 		super();
@@ -20,21 +19,22 @@ public class PersonVO {
 		this.geschlecht = geschlecht;
 		this.geburtsdatum = geburtsdatum;
 	}
-	
-	
+
 	public PersonVO(String nachName, String vorName) {
-		this(nachName, vorName, "empty Street", "leere Hausnummer","unisex", new GregorianCalendar());
+		this(nachName, vorName, "empty Street", "leere Hausnummer", "unisex",
+				new GregorianCalendar());
 	}
-	
+
 	public PersonVO(String nachName) {
-		this(nachName, "kein Vorname", "empty Street", "leere Hausnummer","unisex", new GregorianCalendar());
+		this(nachName, "kein Vorname", "empty Street", "leere Hausnummer",
+				"unisex", new GregorianCalendar());
 	}
-	
+
 	public PersonVO() {
-		this("Mustermann", "Max", "empty Street", "leere Hausnummer","unisex", new GregorianCalendar());
+		this("Mustermann", "Max", "empty Street", "leere Hausnummer", "unisex",
+				new GregorianCalendar());
 	}
-	
-	
+
 	public String getNachName() {
 		return nachName;
 	}
@@ -84,50 +84,54 @@ public class PersonVO {
 			this.geburtsdatum = geburtsdatum;
 
 	}
+
 	public boolean equals(Object o) {
 		if (!(o instanceof PersonVO)) {
 			return false;
 		} else {
-			return this.getVorName().equals(((PersonVO)o).getVorName())
-				 && this.getNachName().equals(((PersonVO)o).getNachName())
-				 && this.getGeschlecht().equals(((PersonVO)o).getGeschlecht())
-				 && this.getStrasse().equals(((PersonVO)o).getStrasse())
-				 && this.getHausNr().equals(((PersonVO)o).getHausNr())
-				 && this.getGeburtsdatum().equals(((PersonVO)o).getGeburtsdatum());
+			return this.getVorName().equals(((PersonVO) o).getVorName())
+					&& this.getNachName().equals(((PersonVO) o).getNachName())
+					&& this.getGeschlecht().equals(
+							((PersonVO) o).getGeschlecht())
+					&& this.getStrasse().equals(((PersonVO) o).getStrasse())
+					&& this.getHausNr().equals(((PersonVO) o).getHausNr())
+					&& this.getGeburtsdatum().equals(
+							((PersonVO) o).getGeburtsdatum());
 		}
 	}
 
-
 	public String toString() {
-		return "Name: " + this.getVorName() + " " + this.getNachName() + "\n "
-				+ "Straﬂe: " + this.getStrasse() +" "+ this.getHausNr() +"\n "
-				+ "Geschlecht: " + this.getGeschlecht() + "\n "
-				+ "Geboren: " + this.getGeburtsdatumStr() + "\n "
-				+ "Alter: " + this.berechnerAlter(this.getGeburtsdatum()) + "\n ";
+		StringBuffer ausgabe = new StringBuffer();
+		ausgabe.append("Name: " + this.getVorName() + " " + this.getNachName()
+				+ "\n ");
+		ausgabe.append("Straﬂe: " + this.getStrasse() + " " + this.getHausNr()
+				+ "\n ");
+		ausgabe.append("Geschlecht: " + this.getGeschlecht() + "\n ");
+		ausgabe.append("Geboren: " + this.getGeburtsdatumStr() + "\n ");
+		ausgabe.append("Alter: " + this.berechnerAlter(this.getGeburtsdatum())
+				+ "\n ");
+
+		return ausgabe.toString();
 	}
 
-	private String getGeburtsdatumStr(){
-		return 	this.getGeburtsdatum().get(GregorianCalendar.DAY_OF_MONTH)
-				+ "."
+	private String getGeburtsdatumStr() {
+		return this.getGeburtsdatum().get(GregorianCalendar.DAY_OF_MONTH) + "."
 				+ (this.getGeburtsdatum().get(GregorianCalendar.MONTH) + 1)
 				+ "." + this.getGeburtsdatum().get(GregorianCalendar.YEAR);
 	}
-	
-	
 
-	
 	public short berechnerAlter(GregorianCalendar geburtsdatum) {
 		GregorianCalendar heute = new GregorianCalendar();
 
 		int dayDiff = heute.get(GregorianCalendar.DAY_OF_MONTH)
 				- geburtsdatum.get(GregorianCalendar.DAY_OF_MONTH);
-		int monthDiff = heute.get(GregorianCalendar.MONTH)+1
+		int monthDiff = heute.get(GregorianCalendar.MONTH) + 1
 				- geburtsdatum.get(GregorianCalendar.MONTH);
 		int yearDiff = heute.get(GregorianCalendar.YEAR)
 				- geburtsdatum.get(GregorianCalendar.YEAR);
 
 		if (monthDiff < 0) {
-			return (short) (yearDiff-1);
+			return (short) (yearDiff - 1);
 		} else {
 			if (monthDiff > 0) {
 				return (short) yearDiff;
@@ -135,7 +139,7 @@ public class PersonVO {
 				if (dayDiff >= 0) {
 					return (short) (yearDiff);
 				} else {
-					return (short) (yearDiff-1);
+					return (short) (yearDiff - 1);
 				}
 			}
 		}

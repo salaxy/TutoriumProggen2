@@ -1,4 +1,4 @@
-public class GerichtVO {
+public abstract class GerichtVO {
 
 	protected int nummer;
 	protected String name;
@@ -50,11 +50,11 @@ public class GerichtVO {
 		this.nummer = nummer;
 	}
 
-	public GerichtVO clone() {
-		GerichtVO gericht = new GerichtVO(this.getNummer(), this.getName(),
-				this.getPreis(), this.getZutaten());
-		return gericht;
-	}
+//	public GerichtVO clone() {
+//		GerichtVO gericht = new GerichtVO(this.getNummer(), this.getName(),
+//				this.getPreis(), this.getZutaten());
+//		return gericht;
+//	}
 
 	public boolean equals(Object obj) {
 		GerichtVO anderesGericht = null;
@@ -87,11 +87,30 @@ public class GerichtVO {
 
 		return false;
 	}
-
-	public String toString() {
-		return "Gericht: " + this.getNummer() + " " + this.name + ", "
-				+ this.preis;
-
+	
+	public String getFormatedPreis(){
+		return String.format("%.2f", this.getPreis());
 	}
 
+	public String toString() {
+		
+		StringBuilder ausgabe=new StringBuilder();
+		
+		ausgabe.append(this.getGerichtNummer() + "\t");
+		ausgabe.append(this.getGerichtName() + ", ");
+		ausgabe.append(this.getFormatedPreis() + "\n");
+		
+		for (int i = 0; i < this.getZutaten().length; i++) {
+			ausgabe.append(this.zutaten[i]);
+			if(i!=this.getZutaten().length-1){
+				ausgabe.append(", ");	
+			}
+		}
+		ausgabe.append("\n");
+		
+		return ausgabe.toString();
+	}
+
+	protected abstract int getGerichtNummer();
+	protected abstract String getGerichtName();
 }
