@@ -1,6 +1,6 @@
 import java.util.GregorianCalendar;
 
-public class AngestellterVO extends PersonVO {
+public abstract class AngestellterVO extends PersonVO {
 
 	protected int personalNummer;
 	protected float gehalt;
@@ -39,8 +39,8 @@ public class AngestellterVO extends PersonVO {
 		this.urlaubsTage = urlaubsTage;
 	}
 
-	public void arbeiteInPizzeria() {
-		// TODO bisher nur marker methode
-	}
+	protected abstract void arbeiteInPizzeria();
+
+	protected abstract void arbeite();
 
 }

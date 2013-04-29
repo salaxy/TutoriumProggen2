@@ -46,4 +46,16 @@ public class KochVO extends AngestellterVO {
 				+ this.getFarbeSchurze().getRGB();
 	}
 
+	@Override
+	public void arbeiteInPizzeria() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void arbeite() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

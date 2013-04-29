@@ -70,4 +70,10 @@ public class KundeVO extends PersonVO {
 		return !(bestellung == null);
 	}
 
+	@Override
+	public void arbeite() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

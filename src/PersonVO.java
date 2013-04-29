@@ -1,6 +1,6 @@
 import java.util.GregorianCalendar;
 
-public class PersonVO {
+public abstract class PersonVO {
 
 	protected String nachName;
 	protected String vorName;
@@ -144,4 +144,6 @@ public class PersonVO {
 			}
 		}
 	}
+	
+	protected abstract void arbeite();
 }

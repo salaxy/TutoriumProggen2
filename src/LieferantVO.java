@@ -1,11 +1,9 @@
-import java.awt.Color;
 import java.util.GregorianCalendar;
 
 
-public class LieferantVO extends AngestellterVO {
+public class LieferantVO extends AngestellterVO implements Fahrer{
 
-	private String fahrzeug;
-	private int kilometerstand;
+
 
 
 	public LieferantVO(String fahrzeug, int personalNummer, float gehalt,
@@ -15,7 +13,8 @@ public class LieferantVO extends AngestellterVO {
 		super(personalNummer, gehalt, urlaubsTage, nachname, vorname, strasse,
 				hausNr, geschlecht, geburtsdatum);
 
-		this.fahrzeug = fahrzeug;
+//		this.fahrzeug = fahrzeug;
+		//TODO ???
 	}
 
 	public boolean equals(Object o) {
@@ -46,16 +45,29 @@ public class LieferantVO extends AngestellterVO {
 		return fahrzeug;
 	}
 
-	public void setFahrzeug(String fahrzeug) {
-		this.fahrzeug = fahrzeug;
-	}
+
 
 	public int getKilometerstand() {
 		return kilometerstand;
 	}
 
-	public void setKilometerstand(int kilometerstand) {
-		this.kilometerstand = kilometerstand;
+
+	@Override
+	public void arbeiteInPizzeria() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void arbeite() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void fahreFahrzeug() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
