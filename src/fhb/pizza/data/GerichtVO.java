@@ -1,6 +1,8 @@
 package fhb.pizza.data;
 
-public abstract class GerichtVO implements Cloneable {
+import java.io.Serializable;
+
+public abstract class GerichtVO implements Cloneable, Serializable {
 
 	protected int nummer;
 	protected String name;
