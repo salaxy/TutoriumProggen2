@@ -1,5 +1,9 @@
 package fhb.pizza.control;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
@@ -124,20 +128,33 @@ public class Bestellung {
 		this.auslieferungsdatum = auslieferungsdatum;
 	}
 
-	public void bestellungAbschliessen() throws KeinGerichtGewaehltException, BestellwertNichtErreichtException {
+	public void bestellungAbschliessen() throws KeinGerichtGewaehltException,
+			BestellwertNichtErreichtException {
 
 		if (this.index == 0) {
 			throw new KeinGerichtGewaehltException(
 					"Es wurde Kein Gericht gewählt, "
 							+ "Sie können die Bestellung nicht abschließen!");
 		}
-		
-		if(this.berechneGesamtpreis()>=MINDESTBESTELLWERT){
+
+		if (this.berechneGesamtpreis() >= MINDESTBESTELLWERT) {
 			throw new BestellwertNichtErreichtException(
 					"Der  Mindestbestellwert wurde nicht erreicht");
 		}
 
 		// TODO whatever
+
+	}
+
+	public void schreibeBestellung(String fileName) throws IOException {
+
+		// öffnen der Datei
+		BufferedWriter dateischreiber = new BufferedWriter(new FileWriter(
+				new File(fileName)));
+		// schreiben der Daten
+		dateischreiber.write(this.toString());
+		// schließen der Datei
+		dateischreiber.close();
 
 	}
 
