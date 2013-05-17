@@ -33,4 +33,12 @@ public class KundenVerwaltung {
 		return ausgabe.toString();
 	}
 
+	public KundeVO[] getKunden() {
+		return kunden;
+	}
+
+	public void setKunden(KundeVO[] kunden) {
+		this.kunden = kunden;
+	}
+
 }

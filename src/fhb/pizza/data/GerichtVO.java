@@ -101,6 +101,7 @@ public abstract class GerichtVO implements Cloneable, Serializable {
 		ausgabe.append(this.getGerichtNummer() + "\t");
 		ausgabe.append(this.getGerichtName() + ", ");
 		ausgabe.append(this.getFormatedPreis() + "\n");
+		ausgabe.append("\t");
 
 		for (int i = 0; i < this.getZutaten().length; i++) {
 			ausgabe.append(this.zutaten[i]);
@@ -108,12 +109,12 @@ public abstract class GerichtVO implements Cloneable, Serializable {
 				ausgabe.append(", ");
 			}
 		}
-		ausgabe.append("\n");
+		ausgabe.append("\n\n");
 
 		return ausgabe.toString();
 	}
 
-	protected abstract int getGerichtNummer();
+	public abstract int getGerichtNummer();
 
-	protected abstract String getGerichtName();
+	public abstract String getGerichtName();
 }

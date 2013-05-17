@@ -141,9 +141,6 @@ public class Bestellung {
 			throw new BestellwertNichtErreichtException(
 					"Der  Mindestbestellwert wurde nicht erreicht");
 		}
-
-		// TODO whatever
-
 	}
 
 	public void schreibeBestellung(String fileName) throws IOException {

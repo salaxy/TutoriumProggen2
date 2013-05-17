@@ -27,7 +27,7 @@ public class DessertVO extends GerichtVO {
 	}
 
 	@Override
-	protected String getGerichtName() {
+	public String getGerichtName() {
 		return this.getName();
 	}
 
