@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 import fhb.pizza.control.Bestellung;
 
 
-public class KundeVO extends PersonVO {
+public class KundeVO extends PersonVO implements Comparable<KundeVO>{
 
 	private final int ID;
 	private static int naechstID = 0;
@@ -79,6 +79,12 @@ public class KundeVO extends PersonVO {
 	public void arbeite() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int compareTo(KundeVO arg0) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

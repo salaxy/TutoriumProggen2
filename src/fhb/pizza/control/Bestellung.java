@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
@@ -19,14 +20,15 @@ public class Bestellung {
 
 	private GregorianCalendar bestelldatum;
 	private GregorianCalendar auslieferungsdatum;
-	private int index = 0;
-	private GerichtVO[] warenkorb;
+//	private int index = 0;
+//	private GerichtVO[] warenkorb;
+	private ArrayList<GerichtVO> warenkorb= new ArrayList<GerichtVO>();
 	private KundeVO kunde;
 
 	private final int MAX_GERICHTE = 10;
 
 	public Bestellung(GregorianCalendar bestelldatum, KundeVO kunde) {
-		this.warenkorb = new GerichtVO[10];
+//		this.warenkorb = new GerichtVO[MAX_GERICHTE];
 		this.bestelldatum = bestelldatum;
 		this.kunde = kunde;
 		kunde.setBestellung(this);
@@ -37,28 +39,39 @@ public class Bestellung {
 
 		// if(index>=warenkorb.length){ //alternativ
 
-		if (index >= MAX_GERICHTE) {
+		if (warenkorb.size() >= MAX_GERICHTE) {
 			System.out.println("Warenkorb voll");
 			throw new GerichtAnzahlUeberschrittenException();
-		} else {
-			warenkorb[index] = neuePizza;
-			index++;
 		}
+		
+		warenkorb.add(neuePizza);
+		
+//		if (index >= MAX_GERICHTE) {
+//			System.out.println("Warenkorb voll");
+//			throw new GerichtAnzahlUeberschrittenException();
+//		} else {
+//			warenkorb[index] = neuePizza;
+//			index++;
+//		}
 	}
 
 	public void loescheLetztesGericht() {
-		if (index > 0) {
-			warenkorb[index - 1] = null;
-			index--;
-		}
+//		if (index > 0) {
+//			warenkorb[index - 1] = null;
+//			index--;
+//		}
+		
+		warenkorb.remove(warenkorb.size()-1);
 	}
 
 	public GerichtVO getGericht(int index) {
-		return warenkorb[index];
+//		return warenkorb[index];
+		return warenkorb.get(index);
 	}
 
 	int getAnzGerichte() {
-		return index;
+//		return index;
+		return warenkorb.size();
 	}
 
 	float berechneGesamtpreis() {
@@ -77,7 +90,7 @@ public class Bestellung {
 		String gericht = new String();
 
 		gericht = gericht + "Max. Gerichte: " + MAX_GERICHTE;
-		gericht = gericht + "\nIndex: " + index;
+		gericht = gericht + "\nIndex: " + getAnzGerichte();
 		gericht = gericht
 				+ "\nbestelldatum: "
 				+ this.bestelldatum.get(GregorianCalendar.DAY_OF_MONTH)
@@ -131,7 +144,7 @@ public class Bestellung {
 	public void bestellungAbschliessen() throws KeinGerichtGewaehltException,
 			BestellwertNichtErreichtException {
 
-		if (this.index == 0) {
+		if (warenkorb.size() == 0) {
 			throw new KeinGerichtGewaehltException(
 					"Es wurde Kein Gericht gewählt, "
 							+ "Sie können die Bestellung nicht abschließen!");
